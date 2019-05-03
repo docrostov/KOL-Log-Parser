@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <script src="sorttable.js"></script>
+    <link rel="stylesheet" type="text/css" href="kolReport.css">
+</head>
+    
+<body>
+    <div class="container">
+    
+        <header>
+            <h1> {{ var }} </h1>
+        </header>
+
+        <nav>
+            <p style='text-align: center'><img src = {{ imgFilename }} /></p>
+            <h3 class='titletop5'>Top Five Values of {{ var }}</h3>
+            <p> {{ topFiveValues }} </p>
+            <h3 class='title99'>2OS Recommendation: {{ topLineRec }}</h3>
+            {{ recs2OS }}
+        </nav>
+
+        <article>
+          <h1>{{ var }} from the table {{ varTable }} </h1>
+          <p class='definition'>{{ deffo }}. </p>
+            <ul>
+                  {% if true in flag %} 
+                <li>Special values are {{spVal}}-type.</li>
+                  {% endif %}
+                <li>There were {{ zeroes }} zero values, {{ zeropct }} of valid records.</li>
+                <li>There were {{ "{:,.0f}".format(missings) }} missing values, {{ misspct }} of the sample. 
+                    {% if missings > 0 %}
+                    <ul><li>Missings went bad @ {{ missBR }}.</li></ul>
+                    {% endif %}
+                </li>
+            </ul>
+            <h3 class='titlebasic'>Summary Statistics</h3>
+          <p>{{ basicsFrame }}</p>
+          {% if true in flag %} 
+            <h3 class='title99'>Special Values: Incidence Grid</h3>
+              <p>{{ specialFrame }}</p>
+          {% endif %}
+            <h3 class='titlechart'>Underlying Chart Data</h3>
+          <p>{{ chartData }}</p>
+        </article>
+
+        <footer>Copyright &copy; 2nd Order Solutions, 2018-2023</footer>
+
+    </div>
+
+</body>
+</html>
